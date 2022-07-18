@@ -5,15 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-    <header class='container-fluid text-center text-white bg-d ark p-2 weather-header'></header>
-    <div class="container-fluid" style="max-width:1400px">
+    <header class="jumbotron text-white bg-primary">
+        <h1 class="display-4 text-center">Weather Dashboard</h1>
+    </header>
+    <div class="container" style="max-width:1400px">
         <div class="row">
-            <aside class="col-lg-3 pb-3"></aside>
-            <div class="col-lg-9 pb-3"></div>
+            <aside class="col-md-3">
+                <h3>Search for a city</h3>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" id="search-input" type="search" pleaceholder="search"/>
+                    <button class="btn my-1 my-sm-2 bg-primary text-white" id="search-button" type="submit"></button>
+                </form>
+                <br>
+                <div class="card" style = "">
+                    <ul class="list-group list-group-flush" id="search-history"></ul>
+                </div>
+            </aside>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h6 class="card-title inline-block id=cityName"></h6>
+                        </div>
+                        <div lass="col-lg-6">
+                            <img src="" id="icon-w" style="margin-top: -10px">
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <h6>Temp: <span id="setTemp"></span></h6>
+                        <h6>Wind: <span id="setWind"></span></h6>
+                        <h6>Humidity: <span id="setHumidity"></span></h6>
+                        <h6>UV Index: <span id="setUvIndex"></span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Five Day Forecast</h3>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row" id="forecast"></div>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>

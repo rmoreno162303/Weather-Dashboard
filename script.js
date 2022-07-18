@@ -9,18 +9,22 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
-
-var apiKey = '998614a34ea2ab5d0ca92dccf188d81e'
-var userSearch = "austin"
-var weatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
-geoAPIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${userSearch}&limit={5}&appid=${apiKey}`
-// document.getElementById('searchTerm').value
-// top will be value from search form
-
 var lat;
 var lon;
 
-function getLatLon() {
+var apiKey = '998614a34ea2ab5d0ca92dccf188d81e'
+var userSearch = "austin"
+//weatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+testApi = 'https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid={472805afe5de7f4e5374a61c4390dd97}'
+geoAPIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${userSearch}&limit=5&appid=${apiKey}`
+// document.getElementById('searchTerm').value
+// top will be value from search form
+
+// var lat;
+// var lon;
+console.log(apiKey)
+
+// function getLatLon() {
 
 fetch(geoAPIUrl)
 .then(function(response) {
@@ -32,19 +36,22 @@ return response.json();
     console.log("lon",data[0].lon)
     lat = data[0].lat
     lon = data[0].lon
-    currentForecast();
+    //currentForecast();
 })
-}
+//}
 
-function currentForecast(){
-fetch(weatherAPIUrl)
+// function currentForecast(){
+fetch(testApi)
+//console.log(weatherAPIUrl)
 .then(function(response) {
 return response.json();
 }).then(function(data){
     console.log(data);
+    //currentForecast.appendChild()
     // append to page action 
 })
-}
+//}
+
 
 // for loops
 
