@@ -9,12 +9,16 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
-var lat;
-var lon;
+// var lat;
+// var lon;
 
 var apiKey = '833acbcfd5452012e5dc8a39d32ea0ed'
 var userSearchEl = document.getElementById('search-input');
 var submitEl= document.getElementById('search-button');
+var currentTempEl = document.querySelector('#current-temp');
+var currentWindEl = document.querySelector('#set-wind');
+var currentHumidityEl = document.querySelector('#set-humidity');
+var currentUvEl = document.querySelector('#set-uvindex');
 
 //weatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
 //testApi = 'api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={998614a34ea2ab5d0ca92dccf188d81e}'
@@ -69,8 +73,27 @@ else {return Promise.reject(new Error(response.statusText)) }
     console.log(humidity)
     console.log(ultraViolet)
 
-    .if(data !== undefined) 
-        var currentTemp = document.querySelector('.currentTemp')
+
+
+    currentTempEl.append(currentTemp);
+    currentWindEl.append(windSpeed);
+    currentHumidityEl.append(humidity);
+    currentUvEl.append(ultraViolet);
+
+
+    function handleFormSubmit(event) {
+    event.preventDefault();
+    currentTempEl = document.querySelector.append("#currentTemp").value
+    return;
+
+    // look into 05 mini project for append action 
+
+}
+
+    // currentTemp.appendChild(currentTemp);
+    // .if(data !== undefined) 
+    //     var currentTemp = document.querySelector('.currentTemp')
+    // 06, 15 has good examples 
     
 }
 )
