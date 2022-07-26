@@ -26,7 +26,7 @@ var submitEl= document.getElementById('search-button');
 // var lon;
 console.log(apiKey)
 
-function getLatLon( event) {
+function getLatLon(event) {
     event.preventDefault();
     var cityName = userSearchEl.value.trim();
     console.log( "city name", cityName);
@@ -41,10 +41,12 @@ return response.json();}
 else {return Promise.reject( new Error(response.statusText)) }
 
 }).then(function (data){
- lat= data. coord.lat;
+ lat = data.coord.lat;
  lon = data.coord.lon;
     
   console.log(data);
+  console.log(lat);
+  console.log(lon);
   return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${apiKey}&units=imperial`)
 ;
 
@@ -52,11 +54,24 @@ else {return Promise.reject( new Error(response.statusText)) }
     if(response.status === 200){
 console.log(response);
 return response.json();}
-else {return Promise.reject( new Error(response.statusText)) }
+else {return Promise.reject(new Error(response.statusText)) }
 
-}).then ( function (data){
+}).then(function(data){
 
     console.log(data);
+    currentTemp = data.current.temp;
+    windSpeed = data.current.wind_speed;
+    humidity = data.current.humidity;
+    ultraViolet = data.current.uvi
+
+    console.log(currentTemp)
+    console.log(windSpeed)
+    console.log(humidity)
+    console.log(ultraViolet)
+
+    .if(data !== undefined) 
+        var currentTemp = document.querySelector('.currentTemp')
+    
 }
 )
 
