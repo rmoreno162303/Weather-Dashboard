@@ -12,11 +12,13 @@
 var lat;
 var lon;
 
-var apiKey = '998614a34ea2ab5d0ca92dccf188d81e'
-var userSearch = "austin"
+var apiKey = '833acbcfd5452012e5dc8a39d32ea0ed'
+var userSearchEl = document.getElementById('search-input');
+var submitEl= document.getElementById('search-button');
+
 //weatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
-testApi = 'https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid={472805afe5de7f4e5374a61c4390dd97}'
-geoAPIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${userSearch}&limit=5&appid=${apiKey}`
+//testApi = 'api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={998614a34ea2ab5d0ca92dccf188d81e}'
+//geoAPIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${userSearch}&limit=5&appid=${apiKey}`
 // document.getElementById('searchTerm').value
 // top will be value from search form
 
@@ -24,35 +26,65 @@ geoAPIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${userSearch}&limit=
 // var lon;
 console.log(apiKey)
 
-// function getLatLon() {
+function getLatLon( event) {
+    event.preventDefault();
+    var cityName = userSearchEl.value.trim();
+    console.log( "city name", cityName);
+    apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
 
-fetch(geoAPIUrl)
+
+fetch(apiUrl)
 .then(function(response) {
-return response.json();
+    if(response.status === 200){
+console.log(response);
+return response.json();}
+else {return Promise.reject( new Error(response.statusText)) }
 
-}).then(function(data){
+}).then(function (data){
+ lat= data. coord.lat;
+ lon = data.coord.lon;
+    
+  console.log(data);
+  return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${apiKey}&units=imperial`)
+;
+
+}) .then(function(response) {
+    if(response.status === 200){
+console.log(response);
+return response.json();}
+else {return Promise.reject( new Error(response.statusText)) }
+
+}).then ( function (data){
+
     console.log(data);
-    console.log("lat",data[0].lat)
-    console.log("lon",data[0].lon)
-    lat = data[0].lat
-    lon = data[0].lon
-    //currentForecast();
-})
+}
+)
+
+}
+
+// }).then(function(data){
+//     console.log(data);
+//     console.log("lat",data[0].lat)
+//     console.log("lon",data[0].lon)
+//     lat = data[0].lat
+//     lon = data[0].lon
+//     //currentForecast();
+// })
 //}
 
 // function currentForecast(){
-fetch(testApi)
-//console.log(weatherAPIUrl)
-.then(function(response) {
-return response.json();
-}).then(function(data){
-    console.log(data);
-    //currentForecast.appendChild()
-    // append to page action 
-})
+// fetch(testApi)
+// //console.log(weatherAPIUrl)
+// .then(function(response) {
+// return response.json();
+// }).then(function(data){
+//     console.log(data);
+//     //currentForecast.appendChild()
+//     // append to page action 
+// })
 //}
 
 
+submitEl.addEventListener("click", getLatLon);
+
 // for loops
-
-
