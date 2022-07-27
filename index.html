@@ -13,7 +13,7 @@
     </header>
     <div class="container" style="max-width:1400px">
         <div class="row">
-            <aside class="col-md-3">
+            <aside class="col-md-2">
                 <h3>Search for a city</h3>
             <!-- <form class="form-inline"> -->
                     <input class="form-control mr-sm-2" id="search-input" type="text" placeholder="search"/>
@@ -24,32 +24,83 @@
                     <ul class="list-group list-group-flush" id="search-history"></ul>
                 </div>
             </aside>
-        </div>
-        <div class="col-md-9">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <h6 class="card-title inline-block id=cityName"></h6>
+        
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h6 class="card-title inline-block id=cityName"></h6>
+                            </div>
+                            <div lass="col-lg-6">
+                                <img src="" id="icon-w" style="margin-top: -10px">
+                            </div>
                         </div>
-                        <div lass="col-lg-6">
-                            <img src="" id="icon-w" style="margin-top: -10px">
+                        <div class="card-text">
+                            <h6>Temp: <span id="current-temp"></span></h6>
+                            <h6>Wind: <span id="set-wind"></span></h6>
+                            <h6>Humidity: <span id="set-humidity"></span></h6>
+                            <h6>UV Index: <span id="set-uvindex"></span></h6>
                         </div>
                     </div>
-                    <div class="card-text">
-                        <h6>Temp: <span id="current-temp"></span></h6>
-                        <h6>Wind: <span id="set-wind"></span></h6>
-                        <h6>Humidity: <span id="set-humidity"></span></h6>
-                        <h6>UV Index: <span id="set-uvindex"></span></h6>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Five Day Forecast</h3>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3>Five Day Forecast</h3>
-                </div>
-                <div class="col-lg-12">
-                    <div class="row" id="forecast"></div>
+                    <div class="col-lg-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">Monday</h1>
+                                <div class="tempMonday">Temp: </div>
+                                <div class="windMonday">Wind: </div>
+                                <div class="humMonday">Humidity: </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">Tuesday</h1>
+                                <div class="tempTuesday">Temp: </div>
+                                <div class="windTuesday">Wind: </div>
+                                <div class="humTuesday">Humidity: </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">Wednesday</h1>
+                                <!--icon-->
+                                <div class="tempWednesday">Temp: </div>
+                                <div class="windWednesday">Wind: </div>
+                                <div class="humWednesday">Humidity: </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">Thursday</h1>
+                                <div class="tempThursday">Temp: </div>
+                                <div class="windThursday">Wind: </div>
+                                <div class="humThursday">Humidity: </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">Friday</h1>
+                                <div class="tempFriday">Temp: </div>
+                                <div class="windFriday">Wind: </div>
+                                <div class="humFriday">Humidity: </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,3 +111,6 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+<!-- <div class="row" id="forecast"></div> -->
+
