@@ -12,6 +12,12 @@
 // var lat;
 // var lon;
 
+//weatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+//testApi = 'api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={998614a34ea2ab5d0ca92dccf188d81e}'
+//geoAPIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${userSearch}&limit=5&appid=${apiKey}`
+// document.getElementById('searchTerm').value
+// top will be value from search form
+
 var apiKey = '833acbcfd5452012e5dc8a39d32ea0ed'
 var userSearchEl = document.getElementById('search-input');
 var submitEl= document.getElementById('search-button');
@@ -19,13 +25,26 @@ var currentTempEl = document.querySelector('#current-temp');
 var currentWindEl = document.querySelector('#set-wind');
 var currentHumidityEl = document.querySelector('#set-humidity');
 var currentUvEl = document.querySelector('#set-uvindex');
+var iconMonEl = document.querySelector('#icon-monday')
+var currentMonEl = document.querySelector('#current-monday');
+var windMonEl = document.querySelector('#wind-monday');
+var humMonEl = document.querySelector('#hum-monday');
 
-//weatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
-//testApi = 'api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={998614a34ea2ab5d0ca92dccf188d81e}'
-//geoAPIUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${userSearch}&limit=5&appid=${apiKey}`
-// document.getElementById('searchTerm').value
-// top will be value from search form
+var currentTueEl = document.querySelector('#current-tuesday');
+var windTueEl = document.querySelector('#wind-tuesday');
+var humTueEl = document.querySelector('#hum-tuesday');
 
+var currentWedEl = document.querySelector('#current-wednesday');
+var windWedEl = document.querySelector('#wind-wednesday');
+var humWedEl = document.querySelector('#hum-wednesday');
+
+var currentThuEl = document.querySelector('#current-thursday');
+var windThuEl = document.querySelector('#wind-thursday');
+var humThuEl = document.querySelector('#hum-thursday');
+
+var currentFriEl = document.querySelector('#current-friday');
+var windFriEl = document.querySelector('#wind-friday');
+var humFriEl = document.querySelector('#hum-friday');
 // var lat;
 // var lon;
 console.log(apiKey)
@@ -80,25 +99,79 @@ else {return Promise.reject(new Error(response.statusText)) }
     currentHumidityEl.append(humidity);
     currentUvEl.append(ultraViolet);
 
+    mondayIcon = data.daily[0].weather[0].icon;
+    iconMon = 'http://openweathermap.org/img/wn/' + mondayIcon + '.png';
+    mondayTemp = data.daily[0].temp.day;
+    mondayWind = data.daily[0].wind_speed;
+    mondayHum = data.daily[0].humidity;
+    $('#icon-monday').attr('src', iconMon);
+    //iconMonEl.append("src =" + iconMon);
+    currentMonEl.append(mondayTemp);
+    windMonEl.append(mondayWind);
+    humMonEl.append(mondayHum)
+
+    tuesdayTemp = data.daily[1].temp.day;
+    tuesdayWind = data.daily[1].wind_speed;
+    tuesdayHum = data.daily[1].humidity;
+    currentTueEl.append(tuesdayTemp);
+    windTueEl.append(tuesdayWind);
+    humTueEl.append(tuesdayHum)
+
+    wednesdayTemp = data.daily[2].temp.day;
+    wednesdayWind = data.daily[2].wind_speed;
+    wednesdayHum = data.daily[2].humidity;
+    currentWedEl.append(wednesdayTemp);
+    windWedEl.append(wednesdayWind);
+    humWedEl.append(wednesdayHum)
+
+    thursdayTemp = data.daily[3].temp.day;
+    thursdayWind = data.daily[3].wind_speed;
+    thursdayHum = data.daily[3].humidity;
+    currentThuEl.append(thursdayTemp);
+    windThuEl.append(thursdayWind);
+    humThuEl.append(thursdayHum)
+
+    fridayTemp = data.daily[4].temp.day;
+    fridayWind = data.daily[4].wind_speed;
+    fridayHum = data.daily[4].humidity;
+    currentFriEl.append(fridayTemp);
+    windFriEl.append(fridayWind);
+    humFriEl.append(fridayHum)
+
+
+
+
+
+
+
+
 
     function handleFormSubmit(event) {
     event.preventDefault();
-    currentTempEl = document.querySelector.append("#currentTemp").value
+    // currentTempEl = document.querySelector.append("#currentTemp").value
     return;
 
-    // look into 05 mini project for append action 
+}})
+//.then(function(data))
+//     event.preventDefault();
+//     fiveApi = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+// fetch(fiveApi)
+// .then(function(response) {
+//     if(response.status === 200){
+// console.log(response);
+// return response.json();}
+// else {return Promise.reject( new Error(response.statusText)) }
+// })
+
+
 
 }
 
-    // currentTemp.appendChild(currentTemp);
-    // .if(data !== undefined) 
-    //     var currentTemp = document.querySelector('.currentTemp')
-    // 06, 15 has good examples 
-    
-}
-)
 
-}
+submitEl.addEventListener("click", getLatLon);
+
+// for loops
+
 
 // }).then(function(data){
 //     console.log(data);
@@ -121,8 +194,3 @@ else {return Promise.reject(new Error(response.statusText)) }
 //     // append to page action 
 // })
 //}
-
-
-submitEl.addEventListener("click", getLatLon);
-
-// for loops
